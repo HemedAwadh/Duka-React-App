@@ -1,7 +1,317 @@
+/* ------------------------------
+   GOOGLE FONT
+------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* ------------------------------
+   APP LAYOUT & BACKGROUND
+------------------------------ */
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow-x: hidden;
+
+  /* Full-page Kenyan shop background */
+  background-image: url("https://vanguardstorefixtures.com/cdn/shop/files/Supermarket_2.jpg?v=1692779999");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* parallax effect */
 }
 
+/* Overlay for readability */
+.App::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3); /* subtle dark overlay */
+  z-index: -1;
+}
+
+/* ------------------------------
+   HEADER / HERO
+------------------------------ */
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  z-index: 1;
+}
+
+.hero-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  color: #FFD700; /* golden yellow */
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
+
+.hero-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  color: #F5F5F5; /* off-white */
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  margin-bottom: 50px;
+}
+
+/* CTA Button */
+.hero-cta-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #2C3E50, #34495E); /* match navbar/footer */
+  border: none;
+  color: #FFD700; /* golden text */
+  padding: 12px 35px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.hero-cta-btn:hover {
+  background: linear-gradient(135deg, #34495E, #2C3E50); /* subtle reverse gradient */
+  color: #FFA500; /* golden-orange hover */
+  transform: translateY(-2px);
+}
+
+
+/* ------------------------------
+   HERO CARDS
+------------------------------ */
+.card {
+  background-color: rgba(255,255,255,0.75); /* semi-transparent white */
+  color: #222222;
+  border-radius: 15px;
+  z-index: 1;
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.card-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+}
+
+/* Staggered card effect */
+.staggered-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  margin-top: 50px;
+}
+
+.staggered-card {
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+/* Stagger each card slightly */
+.staggered-card:nth-child(1) {
+  transform: translateY(0);
+}
+.staggered-card:nth-child(2) {
+  transform: translateY(-20px);
+}
+.staggered-card:nth-child(3) {
+  transform: translateY(-40px);
+}
+
+/* Hover lift effect */
+.staggered-card:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+/* Card text colors */
+.card-title {
+  color: #6F42C1;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  color: #222222;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .staggered-card:nth-child(2),
+  .staggered-card:nth-child(3) {
+    transform: translateY(0);
+  }
+}
+/* ------------------------------
+   NAVBAR
+------------------------------ */
+.navbar-custom {
+    background: linear-gradient(135deg, #2C3E50, #34495E); /* match Footer gradient */
+    backdrop-filter: blur(6px); /* subtle glass effect */
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.navbar-custom .navbar-brand {
+    color: #FFD700 !important; /* golden accent for contrast */
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+}
+
+.navbar-custom .nav-link {
+    color: #FFFFFF !important; /* white links */
+    margin: 0 12px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .navbar-brand:hover {
+    color: #FFA500 !important; /* orange/golden hover accent */
+    transform: scale(1.05);
+}
+
+/* Hamburger menu */
+.navbar-toggler {
+    border-color: #FFD700;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,215,0,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Logout button */
+.btn-logout {
+    background-color: #FFA500; /* orange button */
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+.btn-logout:hover {
+    background-color: #FFD700; /* golden hover */
+    transform: translateY(-2px);
+}
+
+
+
+/* Hamburger menu */
+.navbar-toggler {
+    border-color: #FFD700;
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 215, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Logout button */
+.btn-logout {
+    background-color: #FF6F61;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+.btn-logout:hover {
+    background-color: #D94F41;
+    transform: translateY(-2px);
+}
+
+
+/* ------------------------------
+   FOOTER
+------------------------------ */
+.footer {
+    background: linear-gradient(135deg, #6F42C1, #9D60FF);
+    color: #fff;
+    text-align: center;
+    padding: 25px 20px;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    box-shadow: 0px -2px 12px rgba(0,0,0,0.2);
+}
+
+.footer-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #FFD700;
+    font-weight: 600;
+    margin: 0 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.footer-links a:hover {
+    color: #FF6F61;
+    text-decoration: underline;
+}
+.footer {
+    background: linear-gradient(135deg, #2C3E50, #34495E); /* dark slate gradient */
+    color: #FFD700; /* golden text for links */
+    text-align: center;
+    padding: 25px 20px;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    box-shadow: 0px -2px 12px rgba(0,0,0,0.4);
+}
+
+.footer-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #FFA500;
+    margin: 0 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #FFD700;
+    text-decoration: underline;
+}
+
+
+
+/* ------------------------------
+   LOGO
+------------------------------ */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -13,26 +323,268 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ------------------------------
+   RESPONSIVE PARALLAX
+------------------------------ */
+@media (max-width: 768px) {
+  .App {
+    background-attachment: scroll; /* fix mobile parallax */
   }
-  to {
-    transform: rotate(360deg);
+
+  .hero-title {
+    font-size: 2.2rem;
   }
+
+  .hero-text {
+    font-size: 1.1rem;
+  }
+
+  .hero-cta-btn {
+    font-size: 1rem;
+    padding: 10px 25px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+  }
+
+
+
+  /* Buttons Sales */
+.btn-gradient {
+    background: linear-gradient(135deg, #2C3E50, #34495E);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-gradient:hover {
+    opacity: 0.85;
+}
+
+.btn-closed {
+    background: transparent;
+    border: 2px solid #2C3E50;
+    color: #2C3E50;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 6px 12px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.btn-closed:hover {
+    background: #2C3E50;
+    color: white;
+}
+
+/* Inputs */
+.input-dark {
+    background-color: #2C3E50;
+    color: white;
+    border: 1px solid #34495E;
+}
+
+/* Modals */
+.modal-backdrop {
+    background: rgba(0,0,0,0.6);
+}
+
+.modal-dark {
+    border-radius: 20px;
+    background: linear-gradient(135deg, #2C3E50, #34495E);
+    color: #34495E;
+}
+
+.modal-header-dark {
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* DataTable adjustments (optional for dark theme) */
+.data-table-wrapper {
+    background-color: #1f2a36;
+}
+/* Large Gradient Button for Add Sale / Save Sale */
+.btn-gradient-large {
+    background: linear-gradient(135deg, #2C3E50, #34495E);
+    color: #34495E;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-gradient-large:hover {
+    opacity: 0.85;
+}
+
+/* Closed Button (Pay Here) */
+.btn-closed {
+    background: transparent;
+    border: 2px solid #2C3E50;
+    color: #2C3E50;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 8px 14px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.btn-closed:hover {
+    background: #2C3E50;
+    color: white;
+}
+
+/* Inputs */
+.input-dark {
+    background-color: #2C3E50;
+    color: #34495E;
+    border: 1px solid #34495E;
+}
+
+/* Modals */
+.modal-backdrop {
+    background: rgba(0,0,0,0.7);
+}
+
+.modal-dark-large {
+    border-radius: 25px;
+    background: linear-gradient(135deg, #2C3E50, #34495E);
+    color: #34495E;
+    border: 3px solid #34495E;
+}
+
+.modal-header-dark {
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Modal Background Overlay */
+.custom-modal-backdrop {
+    background: rgba(0, 0, 0, 0.85) !important;
+}
+
+/* Main Modal Box */
+.custom-modal-content {
+    background: linear-gradient(135deg, #2C3E50, #34495E);
+    border-radius: 18px;
+    padding: 10px;
+    border: 3px solid #1b2735;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.6);
+    color: white;
+}
+
+/* Modal Header */
+.custom-modal-header {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    background: transparent;
+    color: white;
+}
+
+/* Dark Inputs */
+.input-dark {
+    background: #1f2a36 !important;
+    border: 2px solid #2f3b47 !important;
+    color: #fff !important;
+    border-radius: 10px;
+}
+
+/* Big gradient button */
+.btn-gradient-large {
+    background: linear-gradient(135deg, #4C6EF5, #3A5BCC);
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 14px;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-gradient-large:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+/* Pay button */
+.btn-closed {
+    background: #00b894;
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-closed:hover {
+    transform: scale(1.05);
+}
+
+.dashboard-title {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+.chart-card {
+    background: linear-gradient(135deg, #2C3E50, #34495E);
+    border-radius: 16px;
+    padding: 20px;
+    border: 3px solid #1b2735;
+    color: white;
+    box-shadow: 0px 0px 25px rgba(0,0,0,0.5);
+}
+
+.chart-card h5 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* for sales button */
+.btn-gradient-large {
+    background: linear-gradient(135deg, #2C3E50, #34495E);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 14px;
+    border: 3px solid #1b2735;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+.btn-gradient-large:hover {
+    background: linear-gradient(135deg, #3B4B61, #3F536B);
+    transform: scale(1.03);
+}
+
+
+
+
+
+
+
 }
