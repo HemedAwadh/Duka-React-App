@@ -16,7 +16,7 @@ function Payments() {
             return;
         }
 
-        fetch("http://localhost:8000/payments", {
+        fetch("https://api.mydukaapp.co.ke", {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",

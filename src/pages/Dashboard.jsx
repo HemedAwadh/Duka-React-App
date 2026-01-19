@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import { Bar, Line } from "react-chartjs-2";
 import 'chart.js/auto';
 
-const BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = "https://api.mydukaapp.co.ke";
 
 function Dashboard() {
   const [dashboardData, setDashboardData] = useState(null);

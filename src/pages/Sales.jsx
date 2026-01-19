@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 
 function Sales() {
   const token = localStorage.getItem("access_token");
-  const BACKEND_URL = "http://localhost:8000";
+  const BACKEND_URL = "https://api.mydukaapp.co.ke";
 
   const [sales, setSales] = useState([]);
   const [products, setProducts] = useState([]);

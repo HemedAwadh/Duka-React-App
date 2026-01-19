@@ -19,7 +19,7 @@ function Users() {
             return;
         }
 
-        fetch("http://localhost:8000/users", {
+        fetch("https://api.mydukaapp.co.ke/users", {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
